@@ -13,10 +13,13 @@ if __name__ == '__main__':
                 # select card3
                 for k in range(j + 1, n):
                     card3 = _card_list[k]
+                    # m에 가까운 값을 answer에 저장
                     if answer < card1 + card2 + card3 <= m:
                         answer = card1 + card2 + card3
+                    # m이랑 같으면 바로 반환
                     if answer == m:
                         return answer
+                    # 모든 경우의 수 탐색 시 종료
                     if i == n - 3:
                         return answer
 
