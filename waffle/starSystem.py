@@ -102,74 +102,34 @@ if __name__ == '__main__':
             star_arr[i]["z"] += star_arr[i]["v.z"]
 
 
-    def xis_comeback():
+    def is_comeback(xyz, v_xyz):
         global star_arr, begin_arr
         for i in range(0, 4):
-            if star_arr[i]["x"] != begin_arr[i]["x"] or star_arr[i]["v.x"] != begin_arr[i]["v.x"]:
+            if star_arr[i][xyz] != begin_arr[i][xyz] or star_arr[i][v_xyz] != begin_arr[i][v_xyz]:
                 return 0
             if i == 3:
                 return 1
 
 
-    def yis_comeback():
-        global star_arr, begin_arr
-        for i in range(0, 4):
-            if star_arr[i]["y"] != begin_arr[i]["y"] or star_arr[i]["v.y"] != begin_arr[i]["v.y"]:
-                return 0
-            if i == 3:
-                return 1
-
-
-    def zis_comeback():
-        global star_arr, begin_arr
-        for i in range(0, 4):
-            if star_arr[i]["z"] != begin_arr[i]["z"] or star_arr[i]["v.z"] != begin_arr[i]["v.z"]:
-                return 0
-            if i == 3:
-                return 1
-
-
-    def get_xcount():
-        xc = 0
+    def get_count(xyz, v_xyz):
+        c = 0
         while True:
             update_vel()
             update_pos()
-            xc += 1
-            if xis_comeback() == 1:
+            c += 1
+            if is_comeback(xyz, v_xyz) == 1:
                 break
-        return xc
-
-
-    def get_ycount():
-        yc = 0
-        while True:
-            update_vel()
-            update_pos()
-            yc += 1
-            if yis_comeback() == 1:
-                break
-        return yc
-
-
-    def get_zcount():
-        zc = 0
-        while True:
-            update_vel()
-            update_pos()
-            zc += 1
-            if zis_comeback() == 1:
-                break
-        return zc
+        return c
 
 
     star_arr, begin_arr = init_star_arr()
-    xc = get_xcount()
+    xc = get_count("x", "v.x")
 
     star_arr, begin_arr = init_star_arr()
-    yc = get_ycount()
+    yc = get_count("y", "v.y")
 
     star_arr, begin_arr = init_star_arr()
-    zc = get_zcount()
+    zc = get_count("z", "v.z")
 
     temp = (xc * yc // gcd(xc, yc))
     result = temp * zc // gcd(temp, zc)
