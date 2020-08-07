@@ -2,40 +2,24 @@ if __name__ == '__main__':
     from math import gcd
     from copy import deepcopy
 
+
+    def create_star(x, y, z, vx, vy, vz):
+        return {
+            "x": x,
+            "y": y,
+            "z": z,
+            "v.x": vx,
+            "v.y": vy,
+            "v.z": vz
+        }
+
+
     def init_star_arr():
         star_arr = []
-        star_arr.append({
-            "x": -12,
-            "y": -11,
-            "z": 14,
-            "v.x": 0,
-            "v.y": 0,
-            "v.z": 0
-        })
-        star_arr.append({
-            "x": 14,
-            "y": 6,
-            "z": 9,
-            "v.x": 0,
-            "v.y": 0,
-            "v.z": 0
-        })
-        star_arr.append({
-            "x": -6,
-            "y": 14,
-            "z": -14,
-            "v.x": 0,
-            "v.y": 0,
-            "v.z": 0
-        })
-        star_arr.append({
-            "x": -8,
-            "y": 3,
-            "z": -14,
-            "v.x": 0,
-            "v.y": 0,
-            "v.z": 0
-        })
+        star_arr.append(create_star(-12, -11, 14, 0, 0, 0))
+        star_arr.append(create_star(14, 6, 9, 0, 0, 0))
+        star_arr.append(create_star(-6, 14, -14, 0, 0, 0))
+        star_arr.append(create_star(-8, 3, -14, 0, 0, 0))
         begin_arr = deepcopy(star_arr)
         return star_arr, begin_arr
 
