@@ -1,0 +1,13 @@
+.sh__logo{
+    width: 16px;
+    height: 16px;
+}
+.play_btn{
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+}
+h1{
+    display: flex;
+    align-items: center;
+}
