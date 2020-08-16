@@ -26,7 +26,20 @@ class Genre:
         print(self.name + "장르가 삭제되었습니다.")
 
     def add_movie(self, _movie):
+        for movie in self.movie_list:
+            if movie == _movie:
+                print(_movie + "가 이미 존재합니다.")
+                return
         self.movie_list.append(_movie)
+        print(_movie + "가 추가되었습니다.")
+
+    def remove_movie(self, _movie):
+        for movie in self.movie_list:
+            if movie == _movie:
+                self.movie_list.remove(_movie)
+                print(_movie + "가 삭제되었습니다.")
+                return
+        print("목록에 " + _movie + "가 존재하지 않아 삭제할 수 없습니다.")
 
     @classmethod
     def remove_genre(cls, _genre):
@@ -35,18 +48,6 @@ class Genre:
                 cls.genre_list.remove(genre)
                 del genre
                 return
-        print(_genre + "는 존재하지 않는 장르 입니다.")
-
-    @classmethod
-    def remove_movie(cls, _genre, _movie):
-        for genre in cls.genre_list:
-            if genre.name == _genre:
-                for movie in genre.movie_list:
-                    if movie == _movie:
-                        genre.movie_list.remove(_movie)
-                        print(_genre + " 장르의 " + _movie + " 가 삭제되었습니다.")
-                        return
-                print(_genre + "에 " + _movie + "가 존재하지 않습니다.")
         print(_genre + "는 존재하지 않는 장르 입니다.")
 
     @classmethod
@@ -70,13 +71,16 @@ class Genre:
             print("장르:" + genre.name)
             for i in range(len(genre.movie_list)):
                 print(str(i + 1) + ". " + genre.movie_list[i])
-            print(LINE)
 
 
 if __name__ == '__main__':
+    print(LINE)
+    print("> Movie Database 관리 모드 입니다.\n이전 정보를 불러오려 load 명령어를 입력하세요.\n현재 정보를 저장하려면 save 명령어를 입력하세요.")
+    print(LINE)
+
     while True:
         # INPUT COMMAND
-        command = input()
+        command = input("> 명령어 입력: ")
         # ADD GENRE
         if ADD_GENRE in command:
             genre_name = command[len(ADD_GENRE):]
@@ -87,6 +91,7 @@ if __name__ == '__main__':
             genre_name, movie_name = command[len(ADD_MOVIE):].split()
             for i in range(len(Genre.genre_list)):
                 if genre_name == Genre.genre_list[i].name:
+                    print(genre_name+"에 ",end="")
                     Genre.genre_list[i].add_movie(movie_name)
                     Genre.print_genre(genre_name)
                 elif i == len(Genre.genre_list) - 1:
@@ -98,7 +103,13 @@ if __name__ == '__main__':
         # REMOVE_MOVIE
         elif REMOVE_MOVIE in command:
             genre_name, movie_name = command[len(REMOVE_MOVIE):].split()
-            Genre.remove_movie(genre_name, movie_name)
+            for i in range(len(Genre.genre_list)):
+                if genre_name == Genre.genre_list[i].name:
+                    print(genre_name + "에 ", end="")
+                    Genre.genre_list[i].remove_movie(movie_name)
+                    Genre.print_genre(genre_name)
+                elif i == len(Genre.genre_list) - 1:
+                    print(genre_name + "장르가 없습니다.")
         # PRINT GENRE
         elif PRINT_GENRE in command:
             genre_name = command[len(PRINT_GENRE):]
@@ -120,3 +131,5 @@ if __name__ == '__main__':
         # EXIT
         elif EXIT in command:
             break
+        else:
+            print("올바르지 않은 명령어 입니다. 다시 입력해 주세요" )

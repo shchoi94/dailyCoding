@@ -144,6 +144,11 @@ button{
     border-radius: var(--size-border-radius);
 }
 
+
+/*About*/
+#about{
+
+}
 .sh__logo {
     width: 30px;
     height: 30px;
