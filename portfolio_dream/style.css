@@ -1,3 +1,36 @@
+:root{
+/*    Color*/
+--color-white:#ffffff;
+--color-light-white:#eeeeee;
+--color-dark-white:#bdbdbd;
+--color-flower-blue:cornflowerblue;
+--color-dark-blue:darkblue;
+--color-black:black;
+--color-dark-grey:#4d4d4d;
+--color-grey:#616161;
+--color-light-grey:#7c7979;
+--color-blue:#73aace;
+--color-yellow:#fff7d1;
+--color-orange:#feb546;
+
+/*    Font size*/
+--font-large:48px;
+--font-medium:28px;
+--font-regular:18px;
+--font-small:16px;
+--font-micro:14px;
+
+/*    Font weight*/
+--weight-bold:700;
+--weight-semi-bold:600;
+--weight-regular:400;
+
+/*    Size*/
+}
+/*Universal tags*/
+*{
+    box-sizing: border-box;
+}
 .sh__logo{
     width: 16px;
     height: 16px;
@@ -7,11 +40,17 @@
     height: 40px;
     justify-content: center;
 }
-h1{
-    display: flex;
-    align-items: center;
-}
 .job__logo{
     width: 90px;
     height: 30px;
 }
+
+#home h1{
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+}
+.home__run{
+    line-height: 50px;
+}
+
