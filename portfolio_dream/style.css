@@ -11,9 +11,9 @@
     --color-grey: #616161;
     --color-light-grey: #7c7979;
     --color-blue: #73aace;
-    --color-yellow: #fff7d1;
+    --color-yellow: #e7da9e;
     --color-orange: #feb546;
-    --color-beige:#f0efed;
+    --color-beige: #f0efed;
 
     /*    Font size*/
     --font-large: 48px;
@@ -79,12 +79,14 @@ ul {
     list-style: none;
     padding-left: 0;
 }
-button{
+
+button {
     background-color: transparent;
     cursor: pointer;
     border: none;
     outline: none;
 }
+
 .head_loge {
     border-radius: 50%;
 }
@@ -123,7 +125,14 @@ button{
 .navbar__menu__item:hover {
     background-color: var(--color-flower-blue);
 }
-
+.navbar__toggle-btn{
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-size: 24px;
+    color: var(--color-beige);
+    display: none;
+}
 /*Home*/
 #home {
     background: url("image/run shinhyuk (1).png") center/cover no-repeat;
@@ -144,10 +153,279 @@ button{
     border-radius: var(--size-border-radius);
 }
 
+/*Section common*/
+.section {
+    padding: 50px;
+    text-align: center;
+    margin: auto;
+}
+
+.section__container {
+    max-width: 1200px;
+    margin: auto;
+}
 
 /*About*/
-#about{
+.about_majors {
+    display: flex;
+    justify-content: space-between;
+    margin: 80px 0;
+}
 
+.major__icon {
+    width: 170px;
+    height: 170px;
+    /*line-hegiht 위아래의 중간에 */
+    line-height: 170px;
+    font-size: 70px;
+    margin: auto;
+    border: 1px solid var(--color-blue);
+    border-radius: 50%;
+    margin-bottom: 16px;
+}
+
+.major__icon :hover {
+    color: var(--color-co-blue);
+    transform: rotate(-30deg) scale(1.1);
+    transition: all 500ms ease;
+}
+
+.major__title, .major__description {
+    color: var(--color-dark-grey);
+}
+
+.major__description {
+    color: var(--color-dark-grey);
+}
+
+.about_jobs {
+    display: flex;
+    flex-direction: column;
+}
+
+.job {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.job__description {
+    margin: 0 16px;
+    text-align: left;
+}
+
+.job__name,
+.job__period {
+    color: var(--color-light-grey);
+}
+
+.job__name {
+    font-size: var(--font-small);
+}
+
+.job__period {
+    font-size: var(--font-micro);
+}
+
+/*Skill*/
+#skills {
+    background-color: var(--color-yellow);
+}
+
+.skillset {
+    display: flex;
+    background-color: var(--color-light-grey);
+    color: var(--color-light-white);
+    margin: 20px 0;
+}
+
+.skillset__title {
+    color: var(--color-white);
+}
+
+.skillset__left {
+    flex-basis: 60%;
+    background-color: var(--color-dark-grey);
+    padding: 20px 40px;
+}
+
+.skillset__right {
+    flex-basis: 40%;
+}
+
+.skill {
+    margin-bottom: 32px;
+}
+
+.skill__description {
+    display: flex;
+    justify-content: space-between;
+}
+
+.skill__bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--color-grey);
+}
+
+.skill__value {
+    height: 3px;
+    background-color: var(--color-orange);
+}
+
+.tools {
+    background-color: var(--color-grey);
+}
+
+.tools,
+.etc {
+    padding: 20px;
+}
+
+/*Work*/
+.work__categories {
+    margin: 40px;
+}
+
+.category__btn {
+    border: 1px solid var(--color-dark-grey);
+    border-radius: var(--size-border-radius);
+    font-size: var(--font-regular);
+    padding: 8px 48px;
+}
+
+.category__btn.active,
+.category__btn:hover {
+    background-color: var(--color-co-blue);
+    color: var(--color-white);
+}
+
+.category__btn.active .category__count,
+.category__btn:hover .category__count {
+    opacity: 1;
+    top: 0;
+}
+
+.category__count {
+    background-color: var(--color-orange);
+    border-radius: 50%;
+    color: var(--color-dark-grey);
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    line-height: 24px;
+    position: relative;
+    top: -20px;
+    left: 4px;
+    opacity: 0;
+    transition: all 500ms ease-in;
+}
+.work__projects{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.project{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 280px;
+    height: 250px;
+    margin: 2px;
+    background-color: var(--color-light-white);
+}
+.project__img{
+    max-width: 100%;
+    max-height: 100%;
+}
+.project__description{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 500ms ease-in;
+}
+.project:hover .project__description{
+    opacity: 0.8;
+    transform: translateY(0px);
+}
+.project__description h3{
+    color: var(--color-white);
+}
+.project__description h3:after{
+    content:' ';
+    position: relative;
+    left: 50%;
+    width: 25px;
+    height: 2px;
+    margin-left: -12px;
+    margin-top: 8px;
+    background-color: var(--color-dark-white);
+}
+/*Testimonial*/
+#testimonials{
+    background-color: var(--color-light-white);
+}
+.testimonials{
+    margin: 40px;
+}
+.testimonial{
+    display: flex;
+    margin: 32px 0;
+}
+.testimonial__avatar{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.testimonial__avatar:nth-child(odd){
+    margin-right: 40px;
+}
+.testimonial__avatar:nth-child(even){
+    margin-left: 40px;
+}
+.testimonial__speech-bubble{
+    padding: 18px;
+    background-color: var(--color-white);
+    border-radius: var(--size-border-radius);
+
+}
+.testimonial__speech-bubble p{
+    color: var(--color-light-grey);
+}
+.testimonial__speech-bubble a{
+    color: var(--color-dark-blue);
+}
+/*Contact*/
+#contact{
+    background-color: var(--color-co-blue);
+}
+.contact__title,
+.contact__email,
+.contact__rights{
+    color: var(--color-white);
+}
+.contact__title{
+    margin: 32px 0;
+}
+.contact__links{
+    font-size: var(--font-large);
+    margin: 24px 0;
+}
+.contact__links i{
+    transition: all 500ms ease-in;
+}
+.contact__links i:hover{
+    transform: scale(1.1);
+    color: var(--color-dark-blue);
 }
 .sh__logo {
     width: 30px;
@@ -164,6 +442,38 @@ button{
 .job__logo {
     width: 90px;
     height: 30px;
+}
+
+@media screen and (max-width: 768px){
+    .navbar__toggle-btn{
+        display: block;
+    }
+    #navbar{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar__menu{
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+        display: none;
+    }
+    .about_majors{
+        flex-direction: column;
+    }
+    .major{
+        margin-bottom: 38px;
+    }
+    .skillset{
+        flex-direction: column;
+    }
+    .project{
+        flex-grow: 1;
+    }
+    .testimonial__avatar{
+        width: 80px;
+        height: 80px;
+    }
 }
 
 
